@@ -6,4 +6,4 @@ This is a _use-at-your-own-risk_ fork of the Protocol Buffers C# implementation 
 ## Usage
 You can either build the project yourself using Visual Studio/MSBuild, or you can download the package from Nuget. To get the package from Nuget, perform the following Nuget command:
 
-    Install-Package Google.Protobuf.dll -Pre
+    Install-Package protobuf3 -Pre
