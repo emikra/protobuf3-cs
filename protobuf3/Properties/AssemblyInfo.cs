@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Google.Protobuf")]
+[assembly: AssemblyTitle("protobuf3")]
 [assembly: AssemblyDescription("Protocol Buffers 3 implementation for C#")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Google")]
 [assembly: AssemblyProduct("Google.Protobuf")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]

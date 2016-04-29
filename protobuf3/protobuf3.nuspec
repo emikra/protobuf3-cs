@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Google.Protobuf.dll</id>
+    <id>$id$</id>
     <version>3.0.0-beta-2</version>
-    <authors>google</authors>
+    <title>$title$</title>
+    <authors>$author$</authors>
     <owners>cgabbadon</owners>
     <licenseUrl>https://raw.githubusercontent.com/emikra/protobuf3-cs/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/emikra/protobuf3-cs</projectUrl>
@@ -12,8 +13,6 @@
     <description>This is package provides a use-at-your-own-risk library of the Protocol Buffers C# implementation with .NET 3.5 framework compatibility. It is based on the v3.0.0-beta-2 release from the official project from Google.</description>
     <releaseNotes>Initial release.</releaseNotes>
     <copyright>Copyright 2016</copyright>
-    <tags>protobuf</tags>
-    <dependencies>
-    </dependencies>
+    <tags>protobuf,protocolbuffers</tags>
   </metadata>
 </package>
