@@ -1,6 +1,6 @@
 ﻿#region Copyright notice and license
 // Protocol Buffers - Google's data interchange format
-// Copyright 2015 Google Inc.  All rights reserved.
+// Copyright 2008 Google Inc.  All rights reserved.
 // https://developers.google.com/protocol-buffers/
 //
 // Redistribution and use in source and binary forms, with or without
@@ -32,45 +32,48 @@
 
 using System;
 
-namespace Google.Protobuf.WellKnownTypes
+namespace Google.Protobuf
 {
     /// <summary>
-    /// Extension methods on BCL time-related types, converting to protobuf types.
+    /// Helper methods for throwing exceptions when preconditions are not met.
     /// </summary>
-    public static class TimeExtensions
+    /// <remarks>
+    /// This class is used internally and by generated code; it is not particularly
+    /// expected to be used from application code, although nothing prevents it
+    /// from being used that way.
+    /// </remarks>
+    public static class ProtoPreconditions
     {
         /// <summary>
-        /// Converts the given <see cref="DateTime"/> to a <see cref="Timestamp"/>.
+        /// Throws an ArgumentNullException if the given value is null, otherwise
+        /// return the value to the caller.
         /// </summary>
-        /// <param name="dateTime">The date and time to convert to a timestamp.</param>
-        /// <exception cref="ArgumentException">The <paramref name="dateTime"/> value has a <see cref="DateTime.Kind"/>other than <c>Utc</c>.</exception>
-        /// <returns>The converted timestamp.</returns>
-        public static Timestamp ToTimestamp(this DateTime dateTime)
+        public static T CheckNotNull<T>(T value, string name) where T : class
         {
-            return Timestamp.FromDateTime(dateTime);
+            if (value == null)
+            {
+                throw new ArgumentNullException(name);
+            }
+            return value;
         }
 
         /// <summary>
-        /// Converts the given <see cref="DateTimeOffset"/> to a <see cref="Timestamp"/>
+        /// Throws an ArgumentNullException if the given value is null, otherwise
+        /// return the value to the caller.
         /// </summary>
-        /// <remarks>The offset is taken into consideration when converting the value (so the same instant in time
-        /// is represented) but is not a separate part of the resulting value. In other words, there is no
-        /// roundtrip operation to retrieve the original <c>DateTimeOffset</c>.</remarks>
-        /// <param name="dateTimeOffset">The date and time (with UTC offset) to convert to a timestamp.</param>
-        /// <returns>The converted timestamp.</returns>
-        public static Timestamp ToTimestamp(this DateTimeOffset dateTimeOffset)
+        /// <remarks>
+        /// This is equivalent to <see cref="CheckNotNull{T}(T, string)"/> but without the type parameter
+        /// constraint. In most cases, the constraint is useful to prevent you from calling CheckNotNull
+        /// with a value type - but it gets in the way if either you want to use it with a nullable
+        /// value type, or you want to use it with an unconstrained type parameter.
+        /// </remarks>
+        internal static T CheckNotNullUnconstrained<T>(T value, string name)
         {
-            return Timestamp.FromDateTimeOffset(dateTimeOffset);
-        }
-
-        /// <summary>
-        /// Converts the given <see cref="TimeSpan"/> to a <see cref="Duration"/>.
-        /// </summary>
-        /// <param name="timeSpan">The time span to convert.</param>
-        /// <returns>The converted duration.</returns>
-        public static Duration ToDuration(this TimeSpan timeSpan)
-        {
-            return Duration.FromTimeSpan(timeSpan);
+            if (value == null)
+            {
+                throw new ArgumentNullException(name);
+            }
+            return value;
         }
     }
 }
