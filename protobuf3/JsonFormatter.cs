@@ -893,7 +893,7 @@ namespace Google.Protobuf
                 return originalName;
             }
 
-#if DOTNET35
+#if !DOTNET45
             // TODO: Consider adding functionality to TypeExtensions to avoid this difference.
             private static Dictionary<object, string> GetNameMapping(System.Type enumType) =>
                 enumType.GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static)
